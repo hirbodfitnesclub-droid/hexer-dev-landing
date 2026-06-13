@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Vazirmatn", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Vazirmatn", "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* DevTools DNA Custom Colors */
+  --color-brand-dark: #0a0a0a;
+  --color-brand-blue: #3592ea;
+  --color-brand-purple: #b158ee;
+
+  /* Custom Animations */
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-float-slow: float 12s ease-in-out infinite;
+  --animate-pulse-glow: pulse-glow 3s ease-in-out infinite;
+  --animate-shimmer: shimmer 2.5s linear infinite;
+  --animate-spin-slow: spin 20s linear infinite;
+  --animate-fade-in-up: fadeInUp 0.5s ease-out forwards;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.35; transform: scale(1); }
+  50% { opacity: 0.7; transform: scale(1.05); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Custom styles for glowing backgrounds and grids */
+.glow-blur-purple {
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, rgba(0,0,0,0) 70%);
+}
+
+.glow-blur-indigo {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, rgba(0,0,0,0) 70%);
+}
+
+.glow-blur-pink {
+  background: radial-gradient(circle, rgba(232, 121, 249, 0.12) 0%, rgba(0,0,0,0) 70%);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+/* HTML Reset */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: #0a0a0a;
+  color: #fafafa;
+  overflow-x: hidden;
+}
+
+/* Custom Animation Utility */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Neon animated border styles for PRO subscription */
+.animated-neon-border {
+  position: relative;
+  border-radius: 1rem;
+}
+.animated-neon-border::before {
+  content: '';
+  position: absolute;
+  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  background: linear-gradient(90deg, #b158ee, #3592ea, #b158ee);
+  background-size: 200% auto;
+  z-index: 1;
+  border-radius: 1rem;
+  animation: neon-flow-anim 3s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes neon-flow-anim {
+  0% { background-position: 0% center; }
+  100% { background-position: -200% center; }
+}
